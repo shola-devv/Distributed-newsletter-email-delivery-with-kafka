@@ -1,0 +1,7 @@
+indempotency
+redis dupue
+
+useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,

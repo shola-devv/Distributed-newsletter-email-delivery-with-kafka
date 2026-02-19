@@ -1,6 +1,6 @@
 const kafka = require("../kafka");
 
-async function run() {
+ async function run() {
   const producer = kafka.producer();
   await producer.connect();
 
@@ -22,4 +22,4 @@ async function run() {
   await producer.disconnect();
 }
 
-run();
+run()

@@ -1,6 +1,7 @@
 const kafka = require("../kafka");
 const fs = require("fs");
 const nodemailer = require("nodemailer");
+const { Kafka } = require('kafkajs');
 
 async function run() {
   const consumer = kafka.consumer({ groupId: "simulation-group" });
@@ -23,11 +24,10 @@ async function run() {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "your_email@gmail.com",
-          pass: "your_app_password", // Use Gmail App Password
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS, // Use Gmail App Password
         },
       });
-
       for (const email of emails) {
         await transporter.sendMail({
           from: "your_email@gmail.com",

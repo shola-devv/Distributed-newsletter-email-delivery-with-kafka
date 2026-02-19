@@ -1,13 +1,14 @@
-const { Kafka } = require("kafkajs");
+require('dotenv').config();
+const { Kafka } = require('kafkajs');
 
 const kafka = new Kafka({
   clientId: "newsletter-service",
-  brokers: ["YOUR_BOOTSTRAP_SERVER"],
+  brokers: [process.env.KAFKA_BROKER],
   ssl: true,
   sasl: {
     mechanism: "plain",
-    username: "API_KEY",
-    password: "API_SECRET",
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD,
   },
 });
 
